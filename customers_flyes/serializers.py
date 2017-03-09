@@ -8,7 +8,10 @@ class CustomerSerializer(serializers.ModelSerializer):
 		fields = '__all__'
 
 class FlySerializer(serializers.ModelSerializer):
-	alias = serializers.StringRelatedField(many=True)
+	alias_from_customers = serializers.StringRelatedField(many=False)
 	class Meta:
 		model = Fly
-		fields = '__all__'
+		fields = ('reservation_id', 'fly_number', 'fly_date', 'seat_number', 'rute', 'alias_from_customers')
+
+
+	

@@ -21,8 +21,8 @@ class Fly(models.Model):
 	fly_date = models.DateTimeField('Fecha del Vuelo', auto_now_add=False)
 	seat_number = models.IntegerField('Numero de asiento', null=False)
 	rute = models.CharField('Ruta', max_length=50)
-	customer_alias = models.ForeignKey(Customer, related_name='alias', on_update=models.CASCADE)
-	def __unicode_(self):
-		return self.fly_number
+	alias_from_customers = models.ForeignKey(Customer, null=False, default='')
+	def __unicode__(self):
+		return self.rute
 
  
