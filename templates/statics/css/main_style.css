@@ -2,6 +2,9 @@ body {
 	background-color: #6B38F2;
 	color:  #DEE6FC;
 }
+a {
+	color:  #DEE6FC;
+}
 img {
 	min-width: 25vw;
 	max-width: 20vw;

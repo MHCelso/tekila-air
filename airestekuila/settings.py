@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
+from django.core.urlresolvers import reverse_lazy
 import os
 import datetime
 
@@ -129,6 +129,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "templates/statics"),
 )
+
+
+# LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = reverse_lazy('/')
+LOGOUT_REDIRECT_URL = reverse_lazy('/')
 
 
 REST_FRAMEWORK = {

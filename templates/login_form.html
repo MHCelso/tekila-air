@@ -6,14 +6,15 @@
 		<img src="{%static '/img/tekila-logo.png'%}" alt="logo-tekila">
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 			<form method="post">
+      {% csrf_token %}
 				<span class="lead">Login</span>
   				<div class="form-group">
-    				<label for="emaiPlace">Dirección de e-mail</label>
-    				<input type="email" class="form-control" id="emaiPlace" placeholder="Email">
+    				<label for="username">Nombre de Usuario (alias)</label>
+    				<input type="text" class="form-control" name="username" id="username" placeholder="Usuario" size="12">
   				</div>
   				<div class="form-group">
-    				<label for="passPlace">Contraseña</label>
-    				<input type="password" class="form-control" id="passPlace" placeholder="Password">
+    				<label for="password">Contraseña</label>
+    				<input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" size="50">
   				</div>
   				<button type="submit" class="btn btn-default">Entrar</button>
 			</form>

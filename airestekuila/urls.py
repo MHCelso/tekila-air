@@ -17,6 +17,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from login.views import IndexView
 from login.views import LoginView
+from login.views import user_login
+from login.views import user_logout
+from login.views import restricted
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
@@ -31,6 +34,9 @@ urlpatterns = [
     url(r'^api-users/', include('login.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', IndexView.as_view(), name='base'),
-    url(r'^login/$', LoginView.as_view(), name='login'),
+    # url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^login/$', user_login, name='login'),
+    url(r'^logout/$', user_logout, name='logout'),
+    url(r'^restricted/$', restricted, name='restricted'),
     url(r'^api/', include('customers_flyes.urls')),
 ]
