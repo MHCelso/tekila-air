@@ -1,5 +1,4 @@
 from django.shortcuts import render
-# from django.views import View
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from django.contrib.auth import authenticate
@@ -8,8 +7,10 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
 from .serializers import UserSerializer
+from .forms import UserForm
+# from django.views import View
 
 # class IndexView(View):
 #	def get(self, request, *args, **kwargs):
@@ -36,9 +37,9 @@ def user_login(request):
 	else:
 		return render(request, 'login_form.html', {}, context)
 
-@login_required
-def restricted(request):
-    return HttpResponse("Estas Logueado")
+# @login_required
+# def register_user(request):
+#     return HttpResponse("Registra un usuario")
 
 
 # Use the login_required() decorator to ensure only those logged in can access the view.
@@ -59,3 +60,9 @@ class LoginView(TemplateView):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class CustomerRegister(FormView):
+	template_name = "register.html"
+	form_class = UserForm
+	success_url = '/' 

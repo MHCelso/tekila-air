@@ -1,16 +1,17 @@
 from __future__ import unicode_literals
-
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
 class Customer(models.Model):
+	user = models.OneToOneField(User)
 	alias = models.CharField('Alias', max_length=50)
 	name = models.CharField('Nombre(s)', max_length=50)
 	last_name = models.CharField('Apellido(s)', max_length=50)
 	phone_number = models.CharField('Telefono', max_length=50)
 	SEX = (('M', 'Masculino'), ('F', 'Femenino'))
 	gender = models.CharField('Genero', max_length=1, choices=SEX)
-	birth_date = models.DateField('Fecha de nacimiento', auto_now_add=False)
+	birth_date = models.DateField('Fecha de nacimiento', auto_now_add=False, null=True)
 	def __unicode__(self):
 		return self.name
 
@@ -24,5 +25,3 @@ class Fly(models.Model):
 	alias_from_customers = models.ForeignKey(Customer, null=False, default='')
 	def __unicode__(self):
 		return self.rute
-
- 
