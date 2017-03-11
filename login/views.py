@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from customers_flyes.models import Customer
 from rest_framework import viewsets
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
@@ -65,4 +66,17 @@ class UserViewSet(viewsets.ModelViewSet):
 class CustomerRegister(FormView):
 	template_name = "register.html"
 	form_class = UserForm
-	success_url = '/' 
+	success_url = '/'
+
+	def form_valid(self, form):
+		user = form.save()
+		customer = Customer()
+		customer.user = user
+		customer.alias = form.cleaned_data['alias']
+		customer.name = form.cleaned_data['nombre']
+		customer.last_name = form.cleaned_data['apellidos']
+		customer.phone_number = form.cleaned_data['telefono']
+		customer.gender = form.cleaned_data['genero']
+		customer.birth_date = form.cleaned_data['fecha_de_naciemiento']
+		customer.save()
+		return super(CustomerRegister, self).form_valid(form)

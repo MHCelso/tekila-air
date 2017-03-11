@@ -14,4 +14,9 @@ from django.contrib.auth.forms import UserCreationForm
 #         fields = ('alias', 'name', 'last_name', 'phone_number', 'gender', 'birth_date')
 
 class UserForm(UserCreationForm):
-    pass
+	alias = forms.CharField()
+	nombre = forms.CharField()
+	apellidos = forms.CharField()
+	telefono = forms.CharField()
+	genero = forms.CharField()
+	fecha_de_naciemiento = forms.DateField()

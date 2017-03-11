@@ -13,7 +13,7 @@ class Customer(models.Model):
 	gender = models.CharField('Genero', max_length=1, choices=SEX)
 	birth_date = models.DateField('Fecha de nacimiento', auto_now_add=False, null=True)
 	def __unicode__(self):
-		return self.name
+		return self.alias
 
 
 class Fly(models.Model):

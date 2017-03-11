@@ -1,4 +1,7 @@
+{%extends 'base.html'%}
+{%block title%}AiresTekila - registrar{%endblock%}
  <!--<h2>{{ user.get_full_name }}</h2>
+}
 <ul>
   <li>Username: {{ user.username }}</li>
   <li>Name: {{ user.customer.name }}</li>
@@ -13,7 +16,6 @@
   {{ customer_form.as_p }}
   <button type="submit">Save changes</button>
 </form>-->
-{%block title%}AiresTekila - registrar{%endblock%}
 {%block content%}
 	<form method="post">
 	{% csrf_token %}
