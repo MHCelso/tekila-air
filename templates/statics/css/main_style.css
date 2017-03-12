@@ -1,6 +1,28 @@
+@font-face {
+	font-family: Rancho;
+	src: url('../fonts/Rancho/Rancho-Regular.ttf');
+}
+@font-face {
+	font-family: Arsenal-Bold;
+	src: url('../fonts/Arsenal/Arsenal-Bold.ttf');
+}
+@font-face {
+	font-family: Arsenal-BoldItalic;
+	src: url('../fonts/Arsenal/Arsenal-BoldItalic.ttf');
+}
+@font-face {
+	font-family: Arsenal-Italic;
+	src: url('../fonts/Arsenal/Arsenal-Italic.ttf');
+}
+@font-face {
+	font-family: Arsenal-Regular;
+	src: url('../fonts/Arsenal/Arsenal-Regular.ttf');
+}
 body {
 	background-color: #6B38F2;
 	color:  #DEE6FC;
+	font-family: Arsenal-Regular;
+	font-size: 1.6em;
 }
 a {
 	color:  #DEE6FC;

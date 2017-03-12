@@ -1,25 +1,11 @@
 {%extends 'base.html'%}
 {%block title%}AiresTekila - registrar{%endblock%}
- <!--<h2>{{ user.get_full_name }}</h2>
-}
-<ul>
-  <li>Username: {{ user.username }}</li>
-  <li>Name: {{ user.customer.name }}</li>
-  <li>Alias: {{ user.customer.alias }}</li>
- 
-  ('user', 'alias', 'name', 'last_name', 'phone_number', 'gender', 'birth_date')
-   
-</ul>
-<form method="post">
-  {% csrf_token %}
-  {{ user_form.as_p }}
-  {{ customer_form.as_p }}
-  <button type="submit">Save changes</button>
-</form>-->
 {%block content%}
+{%if user.is_superuser%}
 	<form method="post">
 	{% csrf_token %}
 	{{form.as_p}}
 	<button type="submit" class="btn btn-default">Registrar</button>
 </form>
+{%endif%}
 {%endblock%}
