@@ -20,6 +20,7 @@ from login.views import LoginView
 from login.views import user_login
 from login.views import user_logout
 from login.views import CustomerRegister
+from login.views import GetCustomers
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
@@ -38,5 +39,6 @@ urlpatterns = [
     url(r'^login/$', user_login, name='login'),
     url(r'^logout/$', user_logout, name='logout'),
     url(r'^registrar-usuarios/$', CustomerRegister.as_view(), name='registrar-usuarios'),
+    url(r'^ver-clientes/$', GetCustomers.as_view(), name='ver-clientes'),
     url(r'^api/', include('customers_flyes.urls')),
 ]

@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block title%}Clientes{%endblock%}
+{%block content%}
+{%if user.is_superuser%}
+<h1>Ver Clientes</h1>
+<form method="post">
+	{%csrf_token%}
+	<button type="submit" class="btn btn-primary">Ver</button>
+</form>
+{%if cliente%}
+	{%for client in clientes %}
+	<span>Cliente: {{client}}</span>
+	<span>Id: {{client.id}}</span>
+	<span>Alias: {{client.alias}}</span>
+	<span>Nombre: {{client.name}}</span>
+	<span>Apellidos: {{client.last_name}}</span>
+	<span>Telefono: {{client.phone_number}}</span>
+	<span>Genero: {{client.gender}}</span>
+	<span>Fecha de naciemiento: {{client.birth_date}}</span>
+	<span>Usuario: {{client.user.username}}</span> <br>
+	{%endfor%}
+	{%else%}
+	<h3>No hay Clientes</h3>
+{%endif%}
+{%else%}
+<h1>No puedes ver esto</h1>
+{%endif%}
+{%endblock%}

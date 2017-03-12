@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 from django.views.generic import TemplateView, FormView
+from django.views import View
 from .serializers import UserSerializer
 from .forms import UserForm
 # from django.views import View
@@ -80,3 +81,15 @@ class CustomerRegister(FormView):
 		customer.birth_date = form.cleaned_data['fecha_de_naciemiento']
 		customer.save()
 		return super(CustomerRegister, self).form_valid(form)
+
+
+class GetCustomers(TemplateView):
+	template_name = "see_customers.html"
+
+	def post(self, request, *args, **kwargs):
+		customer = Customer
+		if request.method == "POST":
+			clientes = customer.objects.all()
+
+			return render(request, self.template_name, {'clientes': clientes, 'cliente': True})
+		return render(request, self.template_name, {})

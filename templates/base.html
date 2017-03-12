@@ -12,7 +12,7 @@
 {% if user.is_authenticated %}
 <h1>Hola ! {{ user.username }} !</h1>
 	{%if user.is_superuser%}
-	<h3><a href="#">Ver Clientes</a></h3>
+	<h3><a href="/ver-clientes/">Ver Clientes</a></h3>
 	<h3><a href="/registrar-usuarios/">Registrar Cliente</a></h3>
 	{%else%}
 	<h3><a href="#">Ver mis Vuelos</a></h3>
