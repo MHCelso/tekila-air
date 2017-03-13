@@ -1,11 +1,6 @@
-{% extends 'base.html'%}
-{%block title%}Registrar-Vuelo{%endblock%}
-{%block content%}
 <div class="container form-main">
-<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-	{%if user.is_superuser%}
-	{%else%}
-	<form method="POST">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+	<form method="POST" action="/registrar-vuelos/">
 		{%csrf_token%}
 		<span><i class="fa fa-plane fa-sm"></i> Registra un Vuelo</span>
 		<div class="form-group">
@@ -29,11 +24,10 @@
 		<input type="text" class="form-control" name="rute" placeholder="ruta" required />
 		</div>
 		<div class="form-group">
-		<input type="hidden" name="customer-alias" value="{{user.customer.id}}"/>
+		<label for="customer-alias">Alias de Cliente</label>
+		<input type="number" class="form-control" id="idCustomer" name="customer-alias" placeholder="alias" required readonly value="{{user.customer.id}}"/>
 		</div>
 		<button class="btn btn-primary" type="submit">Registrar</button>
 	</form>
-	{%endif%}
+	</div>
 </div>
-</div>
-{%endblock%}

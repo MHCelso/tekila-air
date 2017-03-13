@@ -13,11 +13,6 @@ from django.views.generic import TemplateView, FormView
 from django.views import View
 from .serializers import UserSerializer
 from .forms import UserForm
-# from django.views import View
-
-# class IndexView(View):
-#	def get(self, request, *args, **kwargs):
-#		return render(request, 'base.
 
 def user_login(request):
 	context = RequestContext(request)
@@ -35,17 +30,11 @@ def user_login(request):
 			else:
 				return HttpResponse('Tu cuenta esta desactivada')
 		else:
-			# print("Inavlid Dates of the person {0}, {1}".format(username, password))
 			return HttpResponse('Datos incorrectos')
 	else:
 		return render(request, 'login_form.html', {}, context)
 
-# @login_required
-# def register_user(request):
-#     return HttpResponse("Registra un usuario")
 
-
-# Use the login_required() decorator to ensure only those logged in can access the view.
 @login_required
 def user_logout(request):
     logout(request)

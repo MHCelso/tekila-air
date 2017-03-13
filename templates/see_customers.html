@@ -23,6 +23,7 @@
       <th>Genero</th>
       <th>F. Nacimiento</th>
       <th>Usuario</th>
+      <th>selecciona cliente y rellena el formulario</th>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +37,9 @@
       <td>{{client.gender}}</td>
       <td>{{client.birth_date}}</td>
       <td>{{client.user.username}}</td>
+      <td>
+        <button class="btn btn-primary" id="addFlight" value="{{client.id}}">Agregar Vuelo</button>
+      </td>
     </tr>
 	{%endfor%}
   </tbody>
@@ -43,10 +47,11 @@
 </div>
 </div>
 <!-- Table -->
+  {% include "register_flight_super.html" %}
 	{%else%}
 	<h3>No hay Clientes</h3>
   {%endif%}
 {%else%}
-<h1>No puedes ver esto</h1>
+  <h1>No puedes ver esto</h1>
 {%endif%}
 {%endblock%}
