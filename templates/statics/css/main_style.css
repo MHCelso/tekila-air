@@ -39,5 +39,6 @@ img {
 	justify-content: center;
 }
 span {
-	font-family: Arsenal-Italic;
+	font-family: Arsenal-BoldItalic;
+	font-size: 1.6vw;
 }

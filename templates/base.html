@@ -14,8 +14,10 @@
 	{%if user.is_superuser%}
 	<h3><a href="/ver-clientes/">Ver Clientes</a></h3>
 	<h3><a href="/registrar-usuarios/">Registrar Cliente</a></h3>
+	<h3><a href="/registrar-vuelos/">Registrar Vuelos</a></h3>
 	{%else%}
 	<h3><a href="#">Ver mis Vuelos</a></h3>
+	<h3><a href="/registrar-vuelos/">Registrar Vuelos</a></h3>
 	{%endif%}
 <h3><a href="/logout/">Logout</a></h3>
 {% else %}
@@ -24,6 +26,7 @@
 <div class="container-fluid super-master">
 	{%block content%}
 	{%endblock%}
-</div>	
+</div>
+<script src="{%static '/bootstrap-3.3.7-dist/js/bootstrap.min.js'%}"></script>	
 </body>
 </html>

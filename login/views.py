@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from customers_flyes.models import Customer
+from customers_flyes.models import Fly
 from rest_framework import viewsets
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
@@ -81,6 +82,25 @@ class CustomerRegister(FormView):
 		customer.birth_date = form.cleaned_data['fecha_de_naciemiento']
 		customer.save()
 		return super(CustomerRegister, self).form_valid(form)
+
+
+class FlightsRegister(TemplateView):
+	template_name = "register_flight.html"
+
+	def post(self, request, *args, **kwargs):
+		fly = Fly()
+		if request.method == "POST":
+			fly.reservation_id = request.POST.get("reservation-id")
+			fly.fly_number = request.POST.get("fly-number")
+			fly.fly_date = request.POST.get("fly-date")
+			fly.seat_number = request.POST.get("seat-number")
+			fly.rute = request.POST.get("rute")
+			fly.alias_from_customers_id = request.POST.get("customer-alias")
+			fly.save()
+
+			return render(request, self.template_name, {})
+		return render(request, self.template_name, {})
+
 
 
 class GetCustomers(TemplateView):

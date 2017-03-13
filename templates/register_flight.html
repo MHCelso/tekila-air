@@ -1,0 +1,68 @@
+{% extends 'base.html'%}
+{%block title%}Registrar-Vuelo{%endblock%}
+{%block content%}
+<div class="container form-main">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+	{%if user.is_superuser%}
+	<form method="POST">
+		{%csrf_token%}
+		<span>Registra un Vuelo</span>
+		<div class="form-group">
+		<label for="reservation-id">Id de Reservacion</label>
+		<input type="number" class="form-control" name="reservation-id" size="11" placeholder="id reservacion" required />
+		</div>		
+		<div class="form-group">
+		<label for="fly-number">No. de Vuelo</label>
+		<input type="number" class="form-control" name="fly-number" placeholder="no. de vuelo" required />
+		</div>		
+		<div class="form-group">
+		<label for="fly-date">Fecha de Vuelo YYYY-MM-DD HH:MM</label>
+		<input type="datetime" class="form-control" name="fly-date" placeholder="fecha de vuelo" required />
+		</div>		
+		<div class="form-group">
+		<label for="seat-number">No. de Asiento</label>
+		<input type="number" class="form-control" name="seat-number" size="11" placeholder="no. de asiento" required />
+		</div>		
+		<div class="form-group">
+		<label for="rute">Ruta</label>
+		<input type="text" class="form-control" name="rute" placeholder="ruta" required />
+		</div>
+		<div class="form-group">
+		<label for="customer-alias">Alias de Cliente</label>
+		<input type="number" class="form-control" name="customer-alias" placeholder="alias" required value="{{user.id}}"/>
+		</div>
+		<button class="btn btn-primary" type="submit">Registrar</button>
+	</form>
+	{%else%}
+	<form method="POST">
+		{%csrf_token%}
+		<span>Registra un Vuelo</span>
+		<div class="form-group">
+		<label for="reservation-id">Id de Reservacion</label>
+		<input type="number" class="form-control" name="reservation-id" size="11" placeholder="id reservacion" required />
+		</div>		
+		<div class="form-group">
+		<label for="fly-number">No. de Vuelo</label>
+		<input type="number" class="form-control" name="fly-number" placeholder="no. de vuelo" required />
+		</div>		
+		<div class="form-group">
+		<label for="fly-date">Fecha de Vuelo YYYY-MM-DD HH:MM</label>
+		<input type="datetime" class="form-control" name="fly-date" placeholder="fecha de vuelo" required />
+		</div>		
+		<div class="form-group">
+		<label for="seat-number">No. de Asiento</label>
+		<input type="number" class="form-control" name="seat-number" size="11" placeholder="no. de asiento" required />
+		</div>		
+		<div class="form-group">
+		<label for="rute">Ruta</label>
+		<input type="text" class="form-control" name="rute" placeholder="ruta" required />
+		</div>
+		<div class="form-group">
+		<input type="hidden" name="customer-alias" value="{{user.id}}"/>
+		</div>
+		<button class="btn btn-primary" type="submit">Registrar</button>
+	</form>
+	{%endif%}
+</div>
+</div>
+{%endblock%}

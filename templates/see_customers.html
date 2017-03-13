@@ -2,26 +2,50 @@
 {%block title%}Clientes{%endblock%}
 {%block content%}
 {%if user.is_superuser%}
-<h1>Ver Clientes</h1>
+<h3>Ver Clientes</h3>
 <form method="post">
 	{%csrf_token%}
 	<button type="submit" class="btn btn-primary">Ver</button>
 </form>
 {%if cliente%}
+<!-- Table -->
+<div class="row form-main">
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+<table class="table table-responsive ">
+  <thead>
+    <tr>
+	<span>Clientes</span>
+      <th>Id #</th>
+      <th>Alias</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Telefono</th>
+      <th>Genero</th>
+      <th>F. Nacimiento</th>
+      <th>Usuario</th>
+    </tr>
+  </thead>
+  <tbody>
 	{%for client in clientes %}
-	<span>Cliente: {{client}}</span>
-	<span>Id: {{client.id}}</span>
-	<span>Alias: {{client.alias}}</span>
-	<span>Nombre: {{client.name}}</span>
-	<span>Apellidos: {{client.last_name}}</span>
-	<span>Telefono: {{client.phone_number}}</span>
-	<span>Genero: {{client.gender}}</span>
-	<span>Fecha de naciemiento: {{client.birth_date}}</span>
-	<span>Usuario: {{client.user.username}}</span> <br>
+    <tr>
+      <th scope="row">{{client.id}}</th>
+      <td>{{client.alias}}</td>
+      <td>{{client.name}}</td>
+      <td>{{client.last_name}}</td>
+      <td>{{client.phone_number}}</td>
+      <td>{{client.gender}}</td>
+      <td>{{client.birth_date}}</td>
+      <td>{{client.user.username}}</td>
+    </tr>
 	{%endfor%}
+  </tbody>
+</table>
+</div>
+</div>
+<!-- Table -->
 	{%else%}
 	<h3>No hay Clientes</h3>
-{%endif%}
+  {%endif%}
 {%else%}
 <h1>No puedes ver esto</h1>
 {%endif%}
