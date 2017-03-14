@@ -23,6 +23,7 @@
       <th>Genero</th>
       <th>F. Nacimiento</th>
       <th>Usuario</th>
+      <th>Eliminar cliente</th>
       <th>selecciona cliente y completa el formulario</th>
     </tr>
   </thead>
@@ -38,7 +39,14 @@
       <td>{{client.birth_date}}</td>
       <td>{{client.user.username}}</td>
       <td>
-        <button class="btn btn-primary" id="addFlight" value="{{client.id}}">Agregale Vuelo</button>
+        <form action="/borrar-cliente/" method="POST">
+          {%csrf_token%}
+          <input type="hidden" value="{{client.id}}" name="id-customer" />
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+      </td>
+      <td>
+        <button class="btn btn-success" id="addFlight" value="{{client.id}}">Agregar Vuelo</button>
       </td>
     </tr>
 	{%endfor%}
@@ -46,8 +54,9 @@
 </table>
 </div>
 </div>
+{% include "register_flight_super.html" %}
 <!-- Table -->
-  {% include "register_flight_super.html" %}
+  
 	{%else%}
   {%endif%}
 {%else%}

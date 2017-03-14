@@ -32,6 +32,8 @@ def user_login(request):
 	else:
 		return render(request, 'login_form.html', {}, context)
 
+
+@login_required
 def erase_fly(request):
 	context = RequestContext(request)
 
@@ -40,6 +42,17 @@ def erase_fly(request):
 		Fly.objects.filter(id=id_flight).delete()
 		return HttpResponseRedirect('/')
 	return render(request, 'my_flights.html', {}, context)
+
+
+@login_required
+def erase_customer(request):
+	context = RequestContext(request)
+
+	if request.method == "POST":
+		id_customer = request.POST.get('id-customer')
+		Customer.objects.filter(id=id_customer).delete()
+		return HttpResponseRedirect('/')
+	return render(request, 'see_customers.html', {}, context)
 
 
 @login_required
@@ -93,7 +106,7 @@ class CustomerRegister(FormView):
 		customer.last_name = form.cleaned_data['apellidos']
 		customer.phone_number = form.cleaned_data['telefono']
 		customer.gender = form.cleaned_data['genero']
-		customer.birth_date = form.cleaned_data['fecha_de_naciemiento']
+		customer.birth_date = form.cleaned_data['fecha_de_nacimiento']
 		customer.save()
 		return super(CustomerRegister, self).form_valid(form)
 

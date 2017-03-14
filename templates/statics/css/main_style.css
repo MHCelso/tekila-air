@@ -35,10 +35,14 @@ img {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	justify-content: center;
 }
 span {
 	font-family: Arsenal-BoldItalic;
 	font-size: 1.6vw;
+}
+tbody {
+    height: 100px;       
+    overflow-y: auto;    
+    overflow-x: hidden;  
 }

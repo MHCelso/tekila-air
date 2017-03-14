@@ -19,6 +19,7 @@ from login.views import IndexView
 from login.views import LoginView
 from login.views import user_login
 from login.views import erase_fly
+from login.views import erase_customer
 from login.views import user_logout
 from login.views import CustomerRegister
 from login.views import GetCustomers
@@ -39,6 +40,7 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name='base'),
     url(r'^login/$', user_login, name='login'),
     url(r'^borrar-vuelo/$', erase_fly, name='borrar-vuelo'),
+    url(r'^borrar-cliente/$', erase_customer, name='borrar-cliente'),
     url(r'^logout/$', user_logout, name='logout'),
     url(r'^registrar-usuarios/$', CustomerRegister.as_view(), name='registrar-usuarios'),
     url(r'^registrar-vuelos/$', FlightsRegister.as_view(), name='registrar-vuelos'),

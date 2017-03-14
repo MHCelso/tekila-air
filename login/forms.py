@@ -19,4 +19,4 @@ class UserForm(UserCreationForm):
 	apellidos = forms.CharField()
 	telefono = forms.CharField()
 	genero = forms.CharField()
-	fecha_de_nacimiento_YYY_MM_DD = forms.DateField()
+	fecha_de_nacimiento = forms.DateField()
