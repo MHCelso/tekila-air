@@ -35,21 +35,27 @@
 			password = DB_PASSWORD
 			default-character-set = utf8
 
-3. Activar Proyecto !
+3. Activar Proyecto !.
+	
 	3.1. Activa tu entorno virtual y colocate dentro de la carpeta airestekuila
 		 ahí se encuentra un archivo manage.py
 
 	3.2. Teclea: python manage.py makemigrations.
+
 	3.3. Teclea: python manage.py migrate.
+
 	3.4. Teclea: python manage.py createsuperuser.
+
 		3.4.1. Teclea los datos que te pide sin olvidarlos 
 		con ellos tendras acceso al administrador de Django
 		y a la aplicacion web. 
+
 	3.5. Si has llegado sin ningun problema hasta aqui teclea:
 	`python manage.py runserver`
 
 	3.6. Si no tuviste problemas abre tu navegador y ve a la direccion:
 		 `localhost:800` ya que es donde corre nuestro proyecto.
+
 4. Logueate con tu superusuario		 
 5. 1.- Crea tu primer Cliente.
 6. 2.- Crea tu primer Vuelo.
