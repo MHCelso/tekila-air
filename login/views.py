@@ -69,24 +69,18 @@ def erase_customer(request):
 
 @login_required
 def user_logout(request):
-	"""
-	funcion que nos redirecciona al sierre de nuestro cierre de sesion.
-	"""
+	# funcion que nos redirecciona al sierre de nuestro cierre de sesion.
     logout(request)
     return HttpResponseRedirect('/')
 
 
 class IndexView(TemplateView):
-	"""
-	Clase que nos redirecciona a la vista principal del sitio.
-	"""
+	# Clase que nos redirecciona a la vista principal del sitio.
     template_name = "base.html"
 
 
 class UserViewSet(viewsets.ModelViewSet):
-	"""
-	Clase utilizada para la creacion de los formularios que registran un cliente.
-	"""
+	# Clase utilizada para la creacion de los formularios que registran un cliente.
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
