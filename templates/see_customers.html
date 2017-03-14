@@ -2,7 +2,7 @@
 {%block title%}Clientes{%endblock%}
 {%block content%}
 {%if user.is_superuser%}
-<h3>Ver Clientes</h3>
+<h3>Clientes</h3>
 <form method="post">
 	{%csrf_token%}
 	<button type="submit" class="btn btn-primary">Ver</button>
@@ -23,7 +23,7 @@
       <th>Genero</th>
       <th>F. Nacimiento</th>
       <th>Usuario</th>
-      <th>selecciona cliente y rellena el formulario</th>
+      <th>selecciona cliente y completa el formulario</th>
     </tr>
   </thead>
   <tbody>
@@ -38,7 +38,7 @@
       <td>{{client.birth_date}}</td>
       <td>{{client.user.username}}</td>
       <td>
-        <button class="btn btn-primary" id="addFlight" value="{{client.id}}">Agregar Vuelo</button>
+        <button class="btn btn-primary" id="addFlight" value="{{client.id}}">Agregale Vuelo</button>
       </td>
     </tr>
 	{%endfor%}
@@ -49,7 +49,6 @@
 <!-- Table -->
   {% include "register_flight_super.html" %}
 	{%else%}
-	<h3>No hay Clientes</h3>
   {%endif%}
 {%else%}
   <h1>No puedes ver esto</h1>

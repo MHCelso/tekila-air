@@ -1,0 +1,109 @@
+{%extends 'base.html'%}
+{%block title%}Mis Vuelos{%endblock%}
+{%block content%}
+<h2>Vuelos</h2>
+
+{%if user.is_superuser%}
+ <form method="POST">
+  {%csrf_token%}
+    <button type="submit" class="btn btn-primary">Ver</button>
+  </form>
+
+
+  {%if flight%}
+<div class="row form-main">
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+<table class="table table-responsive ">
+  <thead>
+    <tr>
+  <span><i class="fa fa-plane"></i> Vuelos</span>
+      <th>Id #</th>
+      <th>Id de reservacion</th>
+      <th>No. de vuelo</th>
+      <th>fecha de vuelo</th>
+      <th>Asiento</th>
+      <th>Ruta</th>
+      <th>Cancelar vuelo</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%for flis in flights%}
+    <tr>
+      <th scope="row">{{flis.id}}</th>
+      <td>{{flis.reservation_id}}</td>
+      <td>{{flis.fly_number}}</td>
+      <td>{{flis.fly_date}}</td>
+      <td>{{flis.seat_number}}</td>
+      <td>{{flis.rute}}</td>
+      <td>
+        <form method="POST" action="/borrar-vuelo/">
+          {%csrf_token%}
+          <input type="hidden" value="{{flis.id}}" name="erase-id" />
+          <button class="btn btn-primary" type="submit">Cancelar</button>
+        </form>
+      </td>
+    </tr>
+  {%endfor%}
+  </tbody>
+</table>
+</div>
+</div>
+{%else%}
+{%endif%}
+
+
+
+{%else%}
+<form method="GET">
+{%csrf_token%}
+  <input type="hidden" name="id-flight" value="{{user.customer.id}}" />
+  <button type="submit" class="btn btn-primary">Ver</button>
+</form>
+
+
+{%if flight%}
+<div class="row form-main">
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+<table class="table table-responsive ">
+  <thead>
+    <tr>
+  <span><i class="fa fa-plane"></i> Vuelos</span>
+      <th>Id #</th>
+      <th>Id de reservacion</th>
+      <th>No. de vuelo</th>
+      <th>fecha de vuelo</th>
+      <th>Asiento</th>
+      <th>Ruta</th>
+      <th>Cancelar vuelo</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%for flis in flights%}
+    <tr>
+      <th scope="row">{{flis.id}}</th>
+      <td>{{flis.reservation_id}}</td>
+      <td>{{flis.fly_number}}</td>
+      <td>{{flis.fly_date}}</td>
+      <td>{{flis.seat_number}}</td>
+      <td>{{flis.rute}}</td>
+      <td>
+        <form method="POST" action="/borrar-vuelo/">
+          {%csrf_token%}
+          <input type="hidden" value="{{flis.id}}" name="erase-id" />
+          <button class="btn btn-primary" type="submit">Cancelar</button>
+        </form>
+      </td>
+    </tr>
+  {%endfor%}
+  </tbody>
+</table>
+</div>
+</div>
+{%else%}
+{%endif%}
+
+
+{%endif%}
+
+
+{%endblock%}

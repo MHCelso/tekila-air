@@ -18,10 +18,12 @@ from django.contrib import admin
 from login.views import IndexView
 from login.views import LoginView
 from login.views import user_login
+from login.views import erase_fly
 from login.views import user_logout
 from login.views import CustomerRegister
 from login.views import GetCustomers
 from login.views import FlightsRegister
+from login.views import MyAllFlights
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
@@ -32,15 +34,15 @@ urlpatterns = [
     url(r'^get-token/', obtain_jwt_token),
     url(r'^verify-token/', verify_jwt_token),
     url(r'^refresh-token/', refresh_jwt_token),
-    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api-users/', include('login.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', IndexView.as_view(), name='base'),
-    # url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^login/$', user_login, name='login'),
+    url(r'^borrar-vuelo/$', erase_fly, name='borrar-vuelo'),
     url(r'^logout/$', user_logout, name='logout'),
     url(r'^registrar-usuarios/$', CustomerRegister.as_view(), name='registrar-usuarios'),
     url(r'^registrar-vuelos/$', FlightsRegister.as_view(), name='registrar-vuelos'),
+    url(r'^ver-vuelos/$', MyAllFlights.as_view(), name='ver-vuelos'),
     url(r'^ver-clientes/$', GetCustomers.as_view(), name='ver-clientes'),
     url(r'^api/', include('customers_flyes.urls')),
 ]

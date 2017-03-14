@@ -4,6 +4,7 @@
 <div class="container form-main">
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 	{%if user.is_superuser%}
+	<h1>No puedes ver esto</h1>
 	{%else%}
 	<form method="POST">
 		{%csrf_token%}

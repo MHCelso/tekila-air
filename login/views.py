@@ -20,9 +20,7 @@ def user_login(request):
 	if request.method == 'POST':
 		username = request.POST.get('username')
 		password = request.POST.get('password')
-
 		user = authenticate(username=username, password=password)
-
 		if user:
 			if user.is_active:
 				login(request, user)
@@ -33,6 +31,15 @@ def user_login(request):
 			return HttpResponse('Datos incorrectos')
 	else:
 		return render(request, 'login_form.html', {}, context)
+
+def erase_fly(request):
+	context = RequestContext(request)
+
+	if request.method == "POST":
+		id_flight = request.POST.get('erase-id')
+		Fly.objects.filter(id=id_flight).delete()
+		return HttpResponseRedirect('/')
+	return render(request, 'my_flights.html', {}, context)
 
 
 @login_required
@@ -53,6 +60,24 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+
+class MyAllFlights(TemplateView):
+	template_name = 'my_flights.html'
+
+	def post(self, request, *args, **kwargs):
+		fly = Fly
+		if request.method == "POST":
+			allFlights = fly.objects.all()
+			return render(request, self.template_name, {'flights': allFlights, 'flight': True})
+		return render(request, self.template_name, {})
+
+	def get(self, request, *args, **kwargs):
+		fly = Fly
+		if request.method == "GET":
+			id = request.GET.get("id-flight")
+			my_all_flights = fly.objects.filter(alias_from_customers_id=id)
+			return render(request, self.template_name, {'flights': my_all_flights, 'flight': True})
+		return render(request, self.template_name, {})
 
 class CustomerRegister(FormView):
 	template_name = "register.html"
@@ -89,7 +114,6 @@ class FlightsRegister(TemplateView):
 
 			return render(request, self.template_name, {})
 		return render(request, self.template_name, {})
-
 
 
 class GetCustomers(TemplateView):
