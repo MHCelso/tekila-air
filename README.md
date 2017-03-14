@@ -7,18 +7,18 @@
 	
 	1.2. Instala los requeriemientos con pip install -r requiriments.txt
 
-	* Coloca en settings.py de la carpeta airestekuila lo siguiente:
-	  la ubicacion de mi archivo 'my.cnf' es: '/etc/mysql/my.cnf' ya que utilizo una distribucion de linux.
+		* Coloca en settings.py de la carpeta airestekuila lo siguiente:
+	  	la ubicacion de mi archivo 'my.cnf' es: '/etc/mysql/my.cnf' ya que utilizo una distribucion de linux.
 
-		DATABASES = {
-    		'default': {
-        		'ENGINE': 'django.db.backends.mysql',
-        		'OPTIONS': {
-            		'read_default_file': '/etc/mysql/my.cnf',
-            		'charset': 'utf8mb4'
-        		},
-    		}
-		}
+			DATABASES = {
+    			'default': {
+        			'ENGINE': 'django.db.backends.mysql',
+        			'OPTIONS': {
+            			'read_default_file': '/etc/mysql/my.cnf',
+            			'charset': 'utf8mb4'
+        			},
+    			}
+			}
 	
 
 2. Ve al archivo de configuración my.cnf de MySQL.
