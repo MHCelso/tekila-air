@@ -9,9 +9,8 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-from django.core.urlresolvers import reverse_lazy
-import os
-import datetime
+import os 
+import datetime # importacion de libreria datetime para el control de los jason web tokens
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'customers_flyes',
-    'login'
+    'rest_framework', # instalacion de la app django rest framework 
+    'customers_flyes', # instalacion de la aplicacion customers_flyes
+    'login' # instalacion de la aplicacion login
 ]
 
 MIDDLEWARE = [
@@ -58,7 +57,7 @@ ROOT_URLCONF = 'airestekuila.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # seleccion de la carpeta que contiene ls templates a usar
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,7 +75,7 @@ WSGI_APPLICATION = 'airestekuila.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
+#configuracion de la base de datos (mysql en este caso)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -127,15 +126,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "templates/statics"),
+    os.path.join(BASE_DIR, "templates/statics"), # colocacion de la ubicacion de la carpeta que contendrás archivos estaticos
 )
 
 
 # LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/' # variable para el redireccionamiento redondo de la aplicacion
 # LOGOUT_REDIRECT_URL = reverse_lazy('/')
 
-
+# configuraciones del DjangoRestframework (permisos en este caso)
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -150,7 +149,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-
+# configuracion para los jason web tokens
 JWT_AUTH = {
     'JWT_ENCODE_HANDLER':
     'rest_framework_jwt.utils.jwt_encode_handler',

@@ -4,12 +4,18 @@ from .models import Fly
 from .serializers import CustomerSerializer
 from .serializers import FlySerializer
 
-# Create your views here.
+
 class CustomerViewSet(viewsets.ModelViewSet):
+	"""
+	Clase que maneja los datos del Cliente a ser mostrados en la api
+	"""
 	queryset = Customer.objects.all()
 	serializer_class = CustomerSerializer
 
 
 class FlyViewSet(viewsets.ModelViewSet):
+	"""
+	Clase que maneja los datos de Vuelos a ser mostrados en la api
+	"""
 	queryset = Fly.objects.all()
 	serializer_class = FlySerializer

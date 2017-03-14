@@ -1,5 +1,4 @@
 from django.conf.urls import url, include
-# from django.contrib.auth.decorators import login_required
 from .views import LoginView
 from rest_framework import routers
 from .views import UserViewSet

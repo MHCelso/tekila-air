@@ -15,6 +15,10 @@ from .serializers import UserSerializer
 from .forms import UserForm
 
 def user_login(request):
+	"""
+	Funcion que realiza el login mediante el metodo post
+	recibe dos variables y estas son validadas para poder acceder al sitio
+	"""
 	context = RequestContext(request)
 
 	if request.method == 'POST':
@@ -35,6 +39,10 @@ def user_login(request):
 
 @login_required
 def erase_fly(request):
+	"""
+	funcion que elimina un vuelo mediante una peticion post
+	en ella se recibe el parametro a borrar (id)
+	"""
 	context = RequestContext(request)
 
 	if request.method == "POST":
@@ -46,6 +54,10 @@ def erase_fly(request):
 
 @login_required
 def erase_customer(request):
+	"""
+	funcion que elimina un cliente registrado mediante una peticion post 
+	recibe el parametro a borrar (id)
+	"""
 	context = RequestContext(request)
 
 	if request.method == "POST":
@@ -57,24 +69,34 @@ def erase_customer(request):
 
 @login_required
 def user_logout(request):
+	"""
+	funcion que nos redirecciona al sierre de nuestro cierre de sesion.
+	"""
     logout(request)
     return HttpResponseRedirect('/')
 
 
 class IndexView(TemplateView):
+	"""
+	Clase que nos redirecciona a la vista principal del sitio.
+	"""
     template_name = "base.html"
 
 
-class LoginView(TemplateView):
-    template_name = "login_form.html"
-
-
 class UserViewSet(viewsets.ModelViewSet):
+	"""
+	Clase utilizada para la creacion de los formularios que registran un cliente.
+	"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class MyAllFlights(TemplateView):
+	"""
+	Clase que nos trae todos los vuelos utilizando el metodo GET para traer los vuelos 
+	filtrados por cliente.
+	Mediante el metodo post se traen todos los vuelos que seran vistos por el superusuario.
+	"""
 	template_name = 'my_flights.html'
 
 	def post(self, request, *args, **kwargs):
@@ -93,6 +115,9 @@ class MyAllFlights(TemplateView):
 		return render(request, self.template_name, {})
 
 class CustomerRegister(FormView):
+	"""
+	Clase que es utilizada para la creacion de formularios en este caso para el formulario cliente.
+	"""
 	template_name = "register.html"
 	form_class = UserForm
 	success_url = '/'
@@ -112,6 +137,9 @@ class CustomerRegister(FormView):
 
 
 class FlightsRegister(TemplateView):
+	"""
+	Clase utilizada para el registro de un vuelo.
+	"""
 	template_name = "register_flight.html"
 
 	def post(self, request, *args, **kwargs):
@@ -130,6 +158,9 @@ class FlightsRegister(TemplateView):
 
 
 class GetCustomers(TemplateView):
+	"""
+	Clase utilizada para obtener todos los clientes.
+	"""
 	template_name = "see_customers.html"
 
 	def post(self, request, *args, **kwargs):
