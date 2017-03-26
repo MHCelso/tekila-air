@@ -25,8 +25,8 @@
 	* La ubicacion de mi archivo 'my.cnf' es: '/etc/mysql/my.cnf' ya que utilizo una distribucion de linux.
 
 	* Coloca en el apartado [client] lo siguiente:
-		ejemplo:
-
+		* ejemplo:
+		
 		[client]
 		database = DB_NAME
 		host = localhost
