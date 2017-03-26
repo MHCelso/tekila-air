@@ -1,4 +1,4 @@
-#Tekila Aires.
+#Tekila Aires
 
 ##Configuraciones:
 1. En MySQL crea una base de datos "DB_NAME".
