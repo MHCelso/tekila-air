@@ -24,6 +24,29 @@ body {
 	font-family: Arsenal-Regular;
 	font-size: 1.6em;
 }
+header, 
+nav {
+	width: auto;
+	height: auto;
+	background-color: #7769FC;
+}
+header nav ul {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+header nav ul li {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	height: 10vh;
+}
+header nav ul li a {
+	align-self: center;
+	font-size: 1.5em;
+}
 a {
 	color:  #DEE6FC;
 }
