@@ -25,14 +25,14 @@
 	* La ubicacion de mi archivo 'my.cnf' es: '/etc/mysql/my.cnf' ya que utilizo una distribucion de linux.
 
 	* Coloca en el apartado [client] lo siguiente:
-		ejemplo:
+		# ejemplo:
 
-		[client]
-		database = DB_NAME
-		host = localhost
-		user = DB_USER
-		password = DB_PASSWORD
-		default-character-set = utf8
+			[client]
+			database = DB_NAME
+			host = localhost
+			user = DB_USER
+			password = DB_PASSWORD
+			default-character-set = utf8
 
 3. ¡Activar Proyecto!.
 	
