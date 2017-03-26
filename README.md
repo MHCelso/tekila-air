@@ -1,6 +1,6 @@
-#Tekila Aires
+# Tekila Aires
 
-##Configuraciones:
+## Configuraciones:
 1. En MySQL crea una base de datos "DB_NAME".
 
 	1.1. Crea un entorno virtual y al activarle hazle `git clone` con la url de mi proyecto.
