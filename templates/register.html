@@ -2,7 +2,7 @@
 {%block title%}AiresTekila - registrar{%endblock%}
 {%block content%}
 {%if user.is_superuser%}
-<div class="container form-main">
+<div class="container form-main animated bounceInLeft">
 	<form method="POST" action="/registrar-usuarios/">
 	{% csrf_token %}
 	{{form.as_p}}
