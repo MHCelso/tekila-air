@@ -1,3 +1,4 @@
+/*clases de las fuentes*/
 @font-face {
 	font-family: Rancho;
 	src: url('../fonts/Rancho/Rancho-Regular.ttf');
@@ -18,17 +19,29 @@
 	font-family: Arsenal-Regular;
 	src: url('../fonts/Arsenal/Arsenal-Regular.ttf');
 }
+/*css body*/
 body {
 	background-color: #6B38F2;
 	color:  #DEE6FC;
 	font-family: Arsenal-Regular;
-	font-size: 1.6em;
+	font-size: 1.6rem;
 }
+/*propiedades para todos los links*/
+a {
+	color:  #DEE6FC;
+}
+/*propiedades para imagenes*/
+img {
+	min-width: 25vw;
+	max-width: 20vw;
+}
+/*css para la barra de navegacion y lista*/
 header, 
 nav {
 	width: auto;
 	height: auto;
 	background-color: #7769FC;
+	overflow: hidden;
 }
 header nav ul {
 	position: relative;
@@ -45,25 +58,22 @@ header nav ul li {
 }
 header nav ul li a {
 	align-self: center;
-	font-size: 1.5em;
+	font-size: 1.5rem;
+	text-decoration: none;
 }
-a {
-	color:  #DEE6FC;
-}
-img {
-	min-width: 25vw;
-	max-width: 20vw;
-}
+/*propiedades para los formularios*/
 .form-main {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
+/*propiedades para span*/
 span {
 	font-family: Arsenal-BoldItalic;
 	font-size: 1.6vw;
 }
+/*propiedades para el tbody de la table*/
 tbody {
     height: 100px;       
     overflow-y: auto;    
